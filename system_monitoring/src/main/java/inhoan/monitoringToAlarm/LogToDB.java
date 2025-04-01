@@ -38,6 +38,8 @@ public class LogToDB {
 
 				//시간정보
 				String timestamp = data[0];
+
+
 			}
 		    }
 	}
