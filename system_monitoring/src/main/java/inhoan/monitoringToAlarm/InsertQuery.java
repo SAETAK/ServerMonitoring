@@ -20,6 +20,7 @@ public class InsertQuery {
 			pstmt.setInt(3, disk);
 			pstmt.setString(4, timestamp);
 			pstmt.executeUpdate();
+			
 		    } catch (SQLException exception) {
 			    exception.printStackTrace();
 		    }
