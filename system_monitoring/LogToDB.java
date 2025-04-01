@@ -12,5 +12,33 @@ public class LogToDB {
 		String mariadbUser = "root";
 		String mariadbPassword = "57878";
 		String logFile = "/root/server_monitoring/log/sys_monitor.log";
+
+		try (
+			BufferedReader bufferedReader = new BufferedReader(new FileReader(logFile));
+			Connection conn = DriverManager.getConnection(mariadbUrl, mariadbUser, mariadbPassword)
+		    ) {
+			String str;
+			while ((str = bufferedReader.readLine()) != null) {
+				String[] data = str.split(", ");
+				
+				//CPU 사용률 문자열로 자르기
+				String cpuStr = data[1].split(": ")[1];
+				cpuStr = cpuStr.replace("%", "");
+				float cpuUsage = Float.parseFloat(cpuStr);
+
+				//메모리 사용률 문자열로 자르기
+				String memStr = data[2].split(": ")[1];
+				memStr = memStr.replace(" MiB", "");
+				int memUsage = Integer.parseInt(memStr);
+
+				//Disk 사용률 문자열로 자르기
+				String diskStr = data[3].split(": ")[1];
+				diskStr = diskStr.replace("%", "");
+				int diskUsage = Integer.parseInt(diskStr);
+
+				//시간정보
+				String timestamp = data[0];
+			}
+		    }
 	}
 }
