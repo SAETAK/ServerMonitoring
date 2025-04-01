@@ -4,7 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class InsertQuery {
-	private final String mariadbUrl = "jdbc:mariadb://localgost:3306/server_monitoring";
+	private final String mariadbUrl = "jdbc:mariadb://localhost:3306/server_monitoring";
 	private final String mariadbUser = "root";
 	private final String mariadbPassword = "57878";
 
