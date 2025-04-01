@@ -11,7 +11,7 @@ public class InsertQueryDeletePassword {
 	private final String mariadbPassword = "password";
 
 	public void insert(float cpu, int mem, int disk, String timestamp) {
-		String insertQuery = "INSERT INTO server_stats (cpu_usage, mem_usage, disk_usage, timestamp) VALUES (?, ?, ?, ?)";
+		String insertQuery = "INSERT IGNORE INTO server_stats (cpu_usage, mem_usage, disk_usage, timestamp) VALUES (?, ?, ?, ?)";
 
 		try (
 		      Connection conn = DriverManager.getConnection(mariadbUrl, mariadbUser, mariadbPassword);
