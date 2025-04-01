@@ -29,10 +29,23 @@
   </dependencyManagement>
 
   <dependencies>
+    <!-- MariaDB JDBC Driver -->
     <dependency>
       <groupId>org.mariadb.jdbc</groupId>
       <artifactID>mariadb-java-client</artifactID>
       <version>3.5.1</version>
+    </dependency>
+    <!-- SLF4J API -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactID>slf4j-api</artifactID>
+      <version>2.0.7</version>
+    </dependency>
+    <!-- SLF4J + Logback (로깅 구현체)-->
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactID>logback-classic</artifactID>
+      <version>1.4.8</version>
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
