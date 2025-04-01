@@ -30,6 +30,11 @@
 
   <dependencies>
     <dependency>
+      <groupId>org.mariadb.jdbc</groupId>
+      <artifactID>mariadb-java-client</artifactID>
+      <version>3.5.1</version>
+    </dependency>
+    <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
       <scope>test</scope>
