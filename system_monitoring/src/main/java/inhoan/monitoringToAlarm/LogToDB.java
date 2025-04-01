@@ -1,21 +1,13 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
 public class LogToDB {
 	public static void main(String[] args) {
-		String mariadbUrl = "jdbc:mariadb://localgost:3306/server_monitoring";
-		String mariadbUser = "root";
-		String mariadbPassword = "57878";
-		String logFile = "/root/server_monitoring/log/sys_monitor.log";
+                String logFile = "/root/server_monitoring/log/sys_monitor.log";
+		InsertQuery insertQuery = new InsertQuery();
 
-		try (
-			BufferedReader bufferedReader = new BufferedReader(new FileReader(logFile));
-			Connection conn = DriverManager.getConnection(mariadbUrl, mariadbUser, mariadbPassword)
+		try ( BufferedReader bufferedReader = new BufferedReader(new FileReader(logFile));
 		    ) {
 			String str;
 			while ((str = bufferedReader.readLine()) != null) {
@@ -39,8 +31,11 @@ public class LogToDB {
 				//시간정보
 				String timestamp = data[0];
 
-
+				//InsertQuery Class 호출
+				insertQuery.insert(cpuUsage, memUsage, diskUsage, timestamp);
 			}
+		    } catch (IOException exception) {
+			    exception.printStackTrace();
 		    }
 	}
 }
